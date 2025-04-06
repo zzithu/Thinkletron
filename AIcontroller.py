@@ -4,7 +4,7 @@ import torch
 #I just seperated this to make it cleaner to call
 class AIcontroller:
     #intialize the model
-    def __init__(self, model_name="Qwen/Qwen2.5-0.5B-Instruct"):
+    def __init__(self, model_name="Qwen/Qwen2.5-1.5B-Instruct"):
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name,
             torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
