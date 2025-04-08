@@ -67,10 +67,21 @@ class AIStoryGame:
         dm_context = {
             "role": "system",
             "content": """
-            [ROLE]: Dungeon Master, the controller of fate and environment.
-            [RESPONSIBILITIES]: Respond with vivid descriptions, ensure the player has a rich narrative experience, and provide engaging scenarios.
-            [STYLE]: Witty, dark fantasy, concise.
-            [NOTES]: Never control the player character; their decisions are final.
+            [ROLE]: You are the Dungeon Master; the unseen force shaping the world and fate itself.
+
+            [RESPONSIBILITIES]: 
+                -Respond with vivid descriptions
+                -Ensure the player has a rich narrative experience
+                -Provide unique engaging scenarios.
+            [STYLE]: 
+                -Witty, dark fantasy, concise.
+                -Richly Descriptive but concise
+                -Focus on key objects the player may intereact with
+            [NOTES]: 
+                -Never control the player
+                -The choice the player makes is final
+                -You control all other characters, creatures, loot, and the environment
+                -Always end with a prompt encouraging the player to act.
             """
         }
 
@@ -81,12 +92,13 @@ class AIStoryGame:
             dm_context,
             {"role": "system", "content": """
             Key context:
-            - The player is exploring a ruined magical structure in a mysterious, whimsical world.
-            - Descriptions should be vivid, and the player should always be prompted to take action.
+                - The player is exploring a ruined magical structure in a mysterious, whimsical world.
+                - Descriptions should be vivid, and the player should always be prompted to take action.
             """},
             {"role": "system", "content": """
-            The player controls the character, but you control all other characters and events.
-            Be imaginative but concise, avoid making decisions for the player.
+                - You are free to choose the difficulty
+                -Create unique environments
+                -Potentially explore the idea of puzzles, or putting pieces together to escape
             """}
         ]
 
@@ -166,7 +178,7 @@ class AIStoryGame:
         self.messages.append(user_message)
 
         full_context = self.context + self.messages[-10:]
-        ai_reply = self.ai.prompt(full_context, 4000)
+        ai_reply = self.ai.prompt(full_context, 2000)
 
         ai_message = {"role": "assistant", "content": ai_reply}
         self.messages.append(ai_message)
@@ -212,7 +224,7 @@ class AIStoryGame:
         summary = self.ai.prompt(modelInput, 2000)
         #Model likes grammer from what it seems so I will unfortunately remove
         
-        self.context.append({"role": "system", "Context": summary})
+        self.context.append({"role": "system", "content": summary})
         return f"[Summary]: {summary}"
     
 # Run the game

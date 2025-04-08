@@ -23,8 +23,14 @@ class AIcontroller:
 
         generated_ids = self.model.generate(
             **model_inputs,
-            max_new_tokens=max_new_tokens
+            max_new_tokens=max_new_tokens,
+            temperature=0.7,         # Controls randomness (lower = more deterministic)
+            top_p=0.9,               # Nucleus sampling (keeps top tokens adding to 90% probability mass)
+            top_k=50,                # Limits to top-k most likely next tokens
+            repetition_penalty=1.1,  # Discourages repetition
+            do_sample=True   
         )
+
         generated_ids = [
             output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
         ]
