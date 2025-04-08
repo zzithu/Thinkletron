@@ -39,10 +39,9 @@ For image generation we are using Stable Diffusion
     Uses pytorch (model framework), transformers (text generation), stablediffusion (photo gen), tkinter (gui), and pillow (photo)
 
 
-    pip install pytorch 
+    pip install torch 
     Note: this one may require additional setup, visit [pytorch]{https://pytorch.org/} for more details
 
     pip install transformers
     pip install diffusers --upgrade
-    pip install tkinter
     pip install pillow
