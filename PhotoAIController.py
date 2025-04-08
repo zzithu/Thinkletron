@@ -1,10 +1,6 @@
 from diffusers import StableDiffusionPipeline
 import torch
 
-
-from diffusers import StableDiffusionPipeline
-import torch
-
 class PhotoAI:
     def __init__(self):
         # Initialize model and move to GPU in half-precision

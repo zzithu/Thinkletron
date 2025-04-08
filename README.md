@@ -34,3 +34,15 @@ Cite:
 For image generation we are using Stable Diffusion
     [Stable Diffusion]{https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0}
     This is the base with no additional changes at the moment (Code is directly used)
+
+## Dependencies
+    Uses pytorch (model framework), transformers (text generation), stablediffusion (photo gen), tkinter (gui), and pillow (photo)
+
+
+    pip install pytorch 
+    Note: this one may require additional setup, visit [pytorch]{https://pytorch.org/} for more details
+
+    pip install transformers
+    pip install diffusers --upgrade
+    pip install tkinter
+    pip install pillow
